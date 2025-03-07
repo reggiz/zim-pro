@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html>
+<!-- based on a Pen by Devilish Alchemist @ http://codepen.io/devilishalchemist/pen/LERvpM -->
+<head>
+  <meta charset="UTF-8">
+  <title>Git new</title>
+
+  <link rel="stylesheet" href="./resources/css/normalize.min.css">
+  <link rel="stylesheet" href="./resources/css/whhg.css">
+  <link rel="stylesheet" href="./resources/css/fonts.css">
+  <link rel="stylesheet" href="./resources/css/style.css">
+
+</head>
+
+<body>
+  <div class="page">
+
+    <span id="view-toc" class="tooltip">&laquo; view index</span>
+    <span id="view-content" class="tooltip">return to content &raquo;</span>
+    <span id="view-next" class="tooltip">next page &raquo;</span>
+    <span id="view-prev" class="tooltip">&laquo; previous page</span>
+
+    <span class="menu_toggle">
+      <i class="menu_open icon icon-th-list"></i>
+      <i class="menu_close icon icon-import"></i>
+    </span>
+
+    <div id="navigation">
+      <ul>
+<li><a href="../Git.html" title="Git" class="page">Git</a>
+<ul>
+<li><b>Git new</b></li>
+</ul></li>
+<li><a href="../Python.html" title="Python" class="page">Python</a></li>
+<li><a href="../Ruby_on_Rails.html" title="Ruby on Rails" class="page">Ruby on Rails</a></li>
+<li><a href="../Sphinx.html" title="Sphinx" class="page">Sphinx</a></li>
+</ul>
+
+      <span class="zimversion">
+        <small>built with</small><br><strong>Zim 0.76.1</strong>
+        <br>
+        --
+        <br>
+        <a href="https://github.com/scar45/ResponsivePivot">template<br> on Github<br><i class="icon icon-github"></i></a>
+      </span>
+    </div>
+
+    <main class="content">
+      <div class="content_inner">
+        <article>
+          <header>
+            <a id="navPrev" href='../Git.html'><span><i class="icon icon-chevron-left"></i></span></a>
+
+            <a id="navHome" href='../Home.html'><span><i class="icon icon-homealt"></i></span></a>
+
+            <a id="navNext" href='../Python.html'><span><i class="icon icon-chevron-right"></i></span></a>
+          </header>
+
+          <section>
+            <div class="page-title">
+              <h1><i class="icon icon-bookmarkalt"></i> Git new <a name='Git:Git new'></a></h1>
+            </div>
+            <div class="fade fade-top"></div>
+            <div class="page-body">
+              <p>
+Created Четверг 27 февраля 2025
+</p>
+<br>
+<h2>Создание и первая настройка.<a id="создание-и-первая-настройка" class="h_anchor"></a></h2>
+<p>
+<tt>git config --global  user.name zumilko</tt><br>
+<tt>git config --global  user.email</tt> <a href="mailto:eprim@mail.ru" title="eprim@mail.ru" class="mailto"><tt>eprim@mail.ru</tt></a><br>
+<tt>git init</tt> <br>
+<sub>это одноразовая команда, которую вы используете во время первоначальной</sub><br>
+<sub>настройки нового репозитория, создаст новый подкаталог</sub><br>
+ <sub>.git в вашем текущем рабочем каталоге.</sub>
+</p>
+<pre>
+Опционально:
+git config --list
+git config --global color.ui true
+git config --global color.status auto
+Если ругается, что уже тут был другой git:
+git config --global --add safe.directory /run/media/data/Dropbox/zim/Notes/pro
+</pre>
+<br>
+<p>
+Добавьте файлы в новый локальный репозиторий. <br>
+При этом они будут подготовлены для первой фиксации.<br>
+<tt>git add .</tt><br>
+Чтобы отменить подготовку файла, используйте команду <br>
+<tt>git reset</tt> HEAD &lt;file&gt;
+</p>
+<br>
+<br>
+<pre>
+
+</pre>
+<h5>Из справки:<a id="из-справки" class="h_anchor"></a></h5>
+<p>
+   <tt>diff      Show changes between commits, commit and working tree, etc</tt><br>
+   <tt>grep      Print lines matching a pattern</tt><br>
+   <tt>log       Show commit logs</tt><br>
+   <tt>show      Show various types of objects</tt><br>
+   <tt>status    Show the working tree status</tt>
+</p>
+<br>
+<h4>Далее создание репо на github<a id="далее-создание-репо-на-github" class="h_anchor"></a></h4>
+<p>
+<s>Создаем удаленный репозиторий, указывая имя учетной записи.</s><br>
+<s>curl -u 'zumilko' <a href="https://api.github.com/zumilko/repos" title="https://api.github.com/zumilko/repos" class="https">https://api.github.com/zumilko/repos</a> -d'{"name":"zim-pro"}'</s><br>
+<s>Вводим пароль от учетной записи:</s><br>
+<div style='padding-left: 30pt'>
+<s>Enter host password for user 'USER_NAME':</s>
+</div>
+<s>Репозиторий demo создан.</s><br>
+<s>введите сюда описание изображения</s><br>
+<s>Теперь выгружаем проект.</s>
+</p>
+<br>
+<div class="zim-object">
+<pre><code class="sh">git remote add origin https://github.com/zumilko/zim-pro.git
+# Проверка (git config --list)
+# Или измените текущий URL: 
+git remote set-url origin https://github.com/zumilko/zim-pro.git
+
+git push -u origin master
+
+</code></pre>
+</div>
+<br>
+<h4>…or push an existing repository from the command line<a id="or-push-an-existing-repository-from-the-command-line" class="h_anchor"></a></h4>
+<br>
+<p>
+git remote add origin <a href="mailto:git@github.com" title="git@github.com" class="mailto">git@github.com</a>:zumilko/zim-pro.git<br>
+git branch -M main<br>
+git push -u origin main
+</p>
+<br>
+<br>
+<br>
+<br>
+<br>
+<h3>GIT для  Reggiz<a id="git-для--reggiz" class="h_anchor"></a></h3>
+<div class="zim-object">
+<pre><code class="sh"># or create a new repository on the command line
+
+echo "# rubi_rails" &gt;&gt; README.md
+git init
+git add README.md
+git commit -m "first commit"
+git branch -M main
+git remote add origin https://github.com/reggiz/rubi_rails.git
+git push -u origin main
+</code></pre>
+</div>
+
+            </div>
+            <div class="fade fade-bottom"></div>
+          </section>
+
+          <footer>
+              <a href="#" class="scrollToTop" title="Back to top"><i class="icon icon-uploadalt"></i></a>
+          </footer>
+        </article>
+      </div>
+    </main>
+  </div>
+
+  <script src="./resources/js/jquery.v2.1.3.min.js"></script>
+  <script src="./resources/js/index.js"></script>
+
+</body>
+</html>

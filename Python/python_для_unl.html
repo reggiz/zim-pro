@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html>
+<!-- based on a Pen by Devilish Alchemist @ http://codepen.io/devilishalchemist/pen/LERvpM -->
+<head>
+  <meta charset="UTF-8">
+  <title>python для unl</title>
+
+  <link rel="stylesheet" href="./resources/css/normalize.min.css">
+  <link rel="stylesheet" href="./resources/css/whhg.css">
+  <link rel="stylesheet" href="./resources/css/fonts.css">
+  <link rel="stylesheet" href="./resources/css/style.css">
+
+</head>
+
+<body>
+  <div class="page">
+
+    <span id="view-toc" class="tooltip">&laquo; view index</span>
+    <span id="view-content" class="tooltip">return to content &raquo;</span>
+    <span id="view-next" class="tooltip">next page &raquo;</span>
+    <span id="view-prev" class="tooltip">&laquo; previous page</span>
+
+    <span class="menu_toggle">
+      <i class="menu_open icon icon-th-list"></i>
+      <i class="menu_close icon icon-import"></i>
+    </span>
+
+    <div id="navigation">
+      <ul>
+<li><a href="../Git.html" title="Git" class="page">Git</a></li>
+<li><a href="../Python.html" title="Python" class="page">Python</a>
+<ul>
+<li><a href="./python_http.server.html" title="python http.server" class="page">python http.server</a></li>
+<li><b>python для unl</b>
+<ul>
+<li><a href="./python_для_unl/unl_добавить_столбец_в_file.html" title="unl добавить столбец в file" class="page">unl добавить столбец в file</a></li>
+</ul></li>
+<li><a href="./курс_stepik_мои_решения.html" title="курс stepik мои решения" class="page">курс stepik мои решения</a></li>
+</ul></li>
+<li><a href="../Ruby_on_Rails.html" title="Ruby on Rails" class="page">Ruby on Rails</a></li>
+<li><a href="../Sphinx.html" title="Sphinx" class="page">Sphinx</a></li>
+</ul>
+
+      <span class="zimversion">
+        <small>built with</small><br><strong>Zim 0.76.1</strong>
+        <br>
+        --
+        <br>
+        <a href="https://github.com/scar45/ResponsivePivot">template<br> on Github<br><i class="icon icon-github"></i></a>
+      </span>
+    </div>
+
+    <main class="content">
+      <div class="content_inner">
+        <article>
+          <header>
+            <a id="navPrev" href='./python_http.server.html'><span><i class="icon icon-chevron-left"></i></span></a>
+
+            <a id="navHome" href='../Home.html'><span><i class="icon icon-homealt"></i></span></a>
+
+            <a id="navNext" href='./python_для_unl/unl_добавить_столбец_в_file.html'><span><i class="icon icon-chevron-right"></i></span></a>
+          </header>
+
+          <section>
+            <div class="page-title">
+              <h1><i class="icon icon-bookmarkalt"></i> python для unl <a name='Python:python для unl'></a></h1>
+            </div>
+            <div class="fade fade-top"></div>
+            <div class="page-body">
+              <p>
+Created четверг 18 Март 2021
+</p>
+<br>
+<p>
+<b>Задача поменять формат таблиц в unl при обновлении  LS5092</b><br>
+access.unl , dss1_qsig_param.unl , feature_subs_add.unl , feature_subscr_add.unl , feature_subscriber.unl - добавить в конце поле с 0<br>
+sip_feature.unl , exchange.unl , trunk_group.unl - замена части строки
+</p>
+<div class="zim-object">
+<pre><code class="python"># coding=utf-8
+import os
+import shutil
+import tkinter as tk
+from tkinter.filedialog import askopenfilename
+from tkinter.filedialog import askdirectory
+from tkinter.messagebox import showerror
+#access.unl , dss1_qsig_param.unl , feature_subs_add.unl , feature_subscr_add.unl , feature_subscriber.unl - добавить в конце поле с 0
+#sip_feature.unl , exchange.unl , trunk_group.unl - замена части строки
+#
+CORR = "0|\n"
+UNL1 = ['access.unl','dss1_qsig_param.unl','feature_subs_add.unl','feature_subscr_add.unl','feature_subscriber.unl']
+
+def _exchange(directory: str) -&gt; str:
+    filename = "exchange.unl"
+    shutil.copy(os.path.join(directory, filename), os.path.join(directory,"bak"))
+    with open(os.path.join(directory, filename), "w") as wf:
+        with open(os.path.join(directory,"bak", filename), "r") as f:
+            lines = f.read().splitlines()
+            for line in lines:
+                wf.write(line.replace("|480|0|0||","|480|0|0|0||")+"\n")
+    return f"Success write file {filename}\n"
+
+def _sip_feature(directory: str) -&gt; str:
+    filename = "sip_feature.unl"
+    shutil.copy(os.path.join(directory, filename), os.path.join(directory,"bak"))
+    with open(os.path.join(directory, filename), "w") as wf:
+        with open(os.path.join(directory,"bak", filename), "r") as f:
+            lines = f.read().splitlines()
+            for line in lines:
+                wf.write(line.replace("|4|100|0|0|31|0|||0|0|0|7|2|120|5|15|0|0|0|0|0|0|0|||","|4|100|0|0|31|0|||0|0|0|7|2|120|5|15|0|0|0|0|0|0|0|0|0|||")+"\n")
+                print(line)
+    return f"Success write file {filename}\n"
+
+def _trunk_group(directory: str) -&gt; str:
+    filename = "trunk_group.unl"
+    shutil.copy(os.path.join(directory, filename), os.path.join(directory,"bak"))
+    with open(os.path.join(directory, filename), "w") as wf:
+        with open(os.path.join(directory,"bak", filename), "r") as f:
+            lines = f.read().splitlines()
+            for line in lines:
+                wf.write(line.replace("|-1|0|0|0|","|-1|0|1|0|0|")+"\n")
+    return f"Success write file {filename}\n"
+    
+def _zero_to_end(directory: str) -&gt; str:
+    for filename in UNL1:
+        shutil.copy(os.path.join(directory, filename), os.path.join(directory,"bak"))
+        with open(os.path.join(directory, filename), "w") as wf:
+            with open(os.path.join(directory,"bak", filename), "r") as f:
+                lines = f.read().splitlines()
+                for line in lines:
+                    wf.write(f"{line}{CORR}")
+    return f"Success write file {filename}\n"
+
+def work() -&gt; None:
+    dir = askdirectory(title="Открыть папку")
+    if dir:
+        os.mkdir(os.path.join(dir,"bak")) #bak директория для бэкапа изменямых файлов внутри выбранной dir
+        print(_exchange(dir), _sip_feature(dir), _trunk_group(dir), _zero_to_end(dir))
+    else:
+        showerror("Wrong File", f"{filename}")
+
+if __name__ == "__main__":
+
+    root = tk.Tk()
+    tk.Button(root, text = "Open directory", command = work).pack()
+    root.mainloop()
+
+</code></pre>
+</div>
+<br>
+<br>
+<h4>Рефакторинг<a id="рефакторинг" class="h_anchor"></a></h4>
+<p>
+убран файл feature_subscriber.unl из списка UNL1
+</p>
+<div class="zim-object">
+<pre><code class="python"># coding=utf-8
+import os
+import shutil
+import tkinter as tk
+from tkinter.filedialog import askopenfilename
+from tkinter.filedialog import askdirectory
+from tkinter.messagebox import showerror
+
+CORR = "0|"
+UNL1 = ['access.unl', 'dss1_qsig_param.unl', 'feature_subs_add.unl', 'feature_subscr_add.unl']
+
+def _zero_to_end(directory: str) -&gt; str:
+#все файлы копируются в директорию bak внутри директории unl, потом уже читаются оттуда и пишутся на старое место в unl
+    for filename in UNL1:
+        shutil.copy(os.path.join(directory, filename),
+                    os.path.join(directory, "bak"))
+        with open(os.path.join(directory, filename), "w") as wf:
+            with open(os.path.join(directory, "bak", filename), "r") as f:
+                lines = f.read().splitlines()   # чтение файла в список, но без \n в конце, как делает f.readlines()
+                for line in lines:				#построчно
+                    wf.write(f"{line}{CORR}\n") # в конец приклеивается значение CORR и перевод строки
+            print(f"Success write file {filename}")
+    return f"в эти файлы успешно добавлен столбец 0| \n"
+#все файлы копируются в директорию bak внутри директории unl, потом уже читаются оттуда и пишутся на старое место в unl
+def execute(directory: str, filename: str,  replaced_context):
+    shutil.copy(os.path.join(directory, filename),
+                os.path.join(directory, "bak"))
+    with open(os.path.join(directory, filename), "w") as wf:
+        with open(os.path.join(directory, "bak", filename), "r") as f:
+            lines = f.read().splitlines()       # чтение файла в список, но без \n в конце, как делает f.readlines()
+            for line in lines:
+                replaced_context(wf, line)
+
+    return f"Success write file {filename}"
+
+def work() -&gt; None:
+    dir = askdirectory(title="Открыть папку")
+    if dir:
+        try:
+            os.mkdir(os.path.join(dir, "bak"))  #создать /dir/bak
+            print(f"dir bak создана\n")
+        except OSError as error:
+            print(f"dir bak существует\n")
+        finally:
+            print(_zero_to_end(dir))  			#выполнить ф. _zero_to_end
+            flow = [
+                {"directory": dir, "filename": "exchange.unl",
+                    "replaced_context": lambda wf, line: wf.write(line.replace("|480|0|0||", "|480|0|0|0||")+"\n")},
+                {"directory": dir, "filename": "sip_feature.unl",
+                    "replaced_context": lambda wf, line: wf.write(line.replace("|4|100|0|0|31|0|||0|0|0|7|2|120|5|15|0|0|0|0|0|0|0|||", "|4|100|0|0|31|0|||0|0|0|7|2|120|5|15|0|0|0|0|0|0|0|0|0|||")+"\n")},
+                {"directory": dir, "filename": "trunk_group.unl",
+                    "replaced_context": lambda wf, line: wf.write(line.replace("|-1|0|0|0|", "|-1|0|1|0|0|")+"\n")}
+            ]
+            for cmd in flow:
+                print(execute(**cmd))			#выполнить ф. execute
+              
+    else:
+        showerror("Wrong File", f"{filename}")
+
+if __name__ == "__main__":
+
+    root = tk.Tk()
+    tk.Button(root, text="Open directory", command=work).pack()
+    root.mainloop()
+
+
+
+
+
+</code></pre>
+</div>
+<br>
+<br>
+<br>
+<br>
+
+            </div>
+            <div class="fade fade-bottom"></div>
+          </section>
+
+          <footer>
+              <a href="#" class="scrollToTop" title="Back to top"><i class="icon icon-uploadalt"></i></a>
+          </footer>
+        </article>
+      </div>
+    </main>
+  </div>
+
+  <script src="./resources/js/jquery.v2.1.3.min.js"></script>
+  <script src="./resources/js/index.js"></script>
+
+</body>
+</html>

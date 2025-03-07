@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+<!-- based on a Pen by Devilish Alchemist @ http://codepen.io/devilishalchemist/pen/LERvpM -->
+<head>
+  <meta charset="UTF-8">
+  <title>unl: добавить столбец в file</title>
+
+  <link rel="stylesheet" href="./resources/css/normalize.min.css">
+  <link rel="stylesheet" href="./resources/css/whhg.css">
+  <link rel="stylesheet" href="./resources/css/fonts.css">
+  <link rel="stylesheet" href="./resources/css/style.css">
+
+</head>
+
+<body>
+  <div class="page">
+
+    <span id="view-toc" class="tooltip">&laquo; view index</span>
+    <span id="view-content" class="tooltip">return to content &raquo;</span>
+    <span id="view-next" class="tooltip">next page &raquo;</span>
+    <span id="view-prev" class="tooltip">&laquo; previous page</span>
+
+    <span class="menu_toggle">
+      <i class="menu_open icon icon-th-list"></i>
+      <i class="menu_close icon icon-import"></i>
+    </span>
+
+    <div id="navigation">
+      <ul>
+<li><a href="../../Git.html" title="Git" class="page">Git</a></li>
+<li><a href="../../Python.html" title="Python" class="page">Python</a>
+<ul>
+<li><a href="../python_http.server.html" title="python http.server" class="page">python http.server</a></li>
+<li><a href="../python_для_unl.html" title="python для unl" class="page">python для unl</a>
+<ul>
+<li><b>unl добавить столбец в file</b></li>
+</ul></li>
+<li><a href="../курс_stepik_мои_решения.html" title="курс stepik мои решения" class="page">курс stepik мои решения</a></li>
+</ul></li>
+<li><a href="../../Ruby_on_Rails.html" title="Ruby on Rails" class="page">Ruby on Rails</a></li>
+<li><a href="../../Sphinx.html" title="Sphinx" class="page">Sphinx</a></li>
+</ul>
+
+      <span class="zimversion">
+        <small>built with</small><br><strong>Zim 0.76.1</strong>
+        <br>
+        --
+        <br>
+        <a href="https://github.com/scar45/ResponsivePivot">template<br> on Github<br><i class="icon icon-github"></i></a>
+      </span>
+    </div>
+
+    <main class="content">
+      <div class="content_inner">
+        <article>
+          <header>
+            <a id="navPrev" href='../python_для_unl.html'><span><i class="icon icon-chevron-left"></i></span></a>
+
+            <a id="navHome" href='../../Home.html'><span><i class="icon icon-homealt"></i></span></a>
+
+            <a id="navNext" href='../курс_stepik_мои_решения.html'><span><i class="icon icon-chevron-right"></i></span></a>
+          </header>
+
+          <section>
+            <div class="page-title">
+              <h1><i class="icon icon-bookmarkalt"></i> unl: добавить столбец в file <a name='Python:python для unl:unl добавить столбец в file'></a></h1>
+            </div>
+            <div class="fade fade-top"></div>
+            <div class="page-body">
+              <p>
+Created четверг 18 Март 2021<br>
+<span class="zim-tag">@python</span><br>
+<b>выбор файла по кнопке</b>
+</p>
+<div class="zim-object">
+<pre><code class="python"># coding=utf-8
+import os
+import tkinter as tk
+from tkinter.filedialog import askopenfilename
+from tkinter.messagebox import showerror
+
+ADD = "0|" #добавляемое выражение
+
+def zero_to_end(src_filename: str) -&gt; str:
+    dst_file = src_filename
+    os.rename(src_filename, src_filename + '.bak')
+    with open(dst_file, "w") as wf:
+        with open(src_filename + '.bak', "r") as f:
+            lines = f.read().splitlines()
+            for line in lines:
+                wf.write(f"{line}{ADD}\n")
+
+    return f"Success write file {dst_file}"
+
+
+
+def work() -&gt; None:
+	#выбор файла
+    filename = askopenfilename()
+    if filename:
+        print(zero_to_end(filename))
+    else:
+        showerror("Wrong File", f"{filename}")
+
+
+if __name__ == "__main__":
+
+    root = tk.Tk()
+    tk.Button(root, text="Open file", command=work).pack()
+    root.mainloop()
+
+
+
+</code></pre>
+</div>
+
+            </div>
+            <div class="fade fade-bottom"></div>
+          </section>
+
+          <footer>
+              <a href="#" class="scrollToTop" title="Back to top"><i class="icon icon-uploadalt"></i></a>
+          </footer>
+        </article>
+      </div>
+    </main>
+  </div>
+
+  <script src="./resources/js/jquery.v2.1.3.min.js"></script>
+  <script src="./resources/js/index.js"></script>
+
+</body>
+</html>

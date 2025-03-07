@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html>
+<!-- based on a Pen by Devilish Alchemist @ http://codepen.io/devilishalchemist/pen/LERvpM -->
+<head>
+  <meta charset="UTF-8">
+  <title>2.5 списки</title>
+
+  <link rel="stylesheet" href="./resources/css/normalize.min.css">
+  <link rel="stylesheet" href="./resources/css/whhg.css">
+  <link rel="stylesheet" href="./resources/css/fonts.css">
+  <link rel="stylesheet" href="./resources/css/style.css">
+
+</head>
+
+<body>
+  <div class="page">
+
+    <span id="view-toc" class="tooltip">&laquo; view index</span>
+    <span id="view-content" class="tooltip">return to content &raquo;</span>
+    <span id="view-next" class="tooltip">next page &raquo;</span>
+    <span id="view-prev" class="tooltip">&laquo; previous page</span>
+
+    <span class="menu_toggle">
+      <i class="menu_open icon icon-th-list"></i>
+      <i class="menu_close icon icon-import"></i>
+    </span>
+
+    <div id="navigation">
+      <ul>
+<li><a href="../../Git.html" title="Git" class="page">Git</a></li>
+<li><a href="../../Python.html" title="Python" class="page">Python</a>
+<ul>
+<li><a href="../python_http.server.html" title="python http.server" class="page">python http.server</a></li>
+<li><a href="../python_для_unl.html" title="python для unl" class="page">python для unl</a></li>
+<li><a href="../курс_stepik_мои_решения.html" title="курс stepik мои решения" class="page">курс stepik мои решения</a>
+<ul>
+<li><a href="./1.10_условия_if_elif_else.html" title="1.10 условия if elif else" class="page">1.10 условия if elif else</a></li>
+<li><a href="./2.2_цикл_while.html" title="2.2 цикл while" class="page">2.2 цикл while</a></li>
+<li><a href="./2.3_цикл_for_range.html" title="2.3 цикл for range" class="page">2.3 цикл for range</a></li>
+<li><a href="./2.4_строки_и_символы.html" title="2.4 строки и символы" class="page">2.4 строки и символы</a></li>
+<li><b>2.5 списки</b></li>
+<li><a href="./3.1_функции.html" title="3.1 функции" class="page">3.1 функции</a></li>
+<li><a href="./3.2_словари.html" title="3.2 словари" class="page">3.2 словари</a></li>
+<li><a href="./3.4_файловый_ввод_вывод.html" title="3.4 файловый ввод вывод" class="page">3.4 файловый ввод вывод</a></li>
+</ul></li>
+</ul></li>
+<li><a href="../../Ruby_on_Rails.html" title="Ruby on Rails" class="page">Ruby on Rails</a></li>
+<li><a href="../../Sphinx.html" title="Sphinx" class="page">Sphinx</a></li>
+</ul>
+
+      <span class="zimversion">
+        <small>built with</small><br><strong>Zim 0.76.1</strong>
+        <br>
+        --
+        <br>
+        <a href="https://github.com/scar45/ResponsivePivot">template<br> on Github<br><i class="icon icon-github"></i></a>
+      </span>
+    </div>
+
+    <main class="content">
+      <div class="content_inner">
+        <article>
+          <header>
+            <a id="navPrev" href='./2.4_строки_и_символы.html'><span><i class="icon icon-chevron-left"></i></span></a>
+
+            <a id="navHome" href='../../Home.html'><span><i class="icon icon-homealt"></i></span></a>
+
+            <a id="navNext" href='./3.1_функции.html'><span><i class="icon icon-chevron-right"></i></span></a>
+          </header>
+
+          <section>
+            <div class="page-title">
+              <h1><i class="icon icon-bookmarkalt"></i> 2.5 списки <a name='Python:курс stepik мои решения:2.5 списки'></a></h1>
+            </div>
+            <div class="fade fade-top"></div>
+            <div class="page-body">
+              <p>
+Created Понедельник 19 апреля 2021
+</p>
+<br>
+<p>
+Напишите программу, на вход которой подаётся список чисел одной строкой. Программа должна для каждого элемента этого списка вывести сумму двух его соседей. Для элементов списка, являющихся крайними, одним из соседей считается элемент, находящий на противоположном конце этого списка. Например, если на вход подаётся список "1 3 5 6 10", то на выход ожидается список "13 6 9 15 7" (без кавычек).<br>
+Если на вход пришло только одно число, надо вывести его же.<br>
+Вывод должен содержать одну строку с числами нового списка, разделёнными пробелом.
+</p>
+<div class="zim-object">
+<pre><code class="python">st = input()
+sp = st.split()
+if len(sp) &gt; 1:
+    s = 0
+    i = 0
+    for c in sp:
+        if (i + 1) &lt; len(sp):
+            s = int(sp[i - 1]) + int(sp[i + 1])
+            i += 1
+            print(s, end=' ')
+        else:
+            s = int(sp[i - 1]) + int(sp[0])
+            print(s, end=' ')
+else:
+    print(sp)
+
+</code></pre>
+</div>
+<br>
+<br>
+<h4>2<a id="2" class="h_anchor"></a></h4>
+<p>
+Напишите программу, которая принимает на вход список чисел в одной строке и выводит на экран в одну строку значения, которые встречаются в нём более одного раза.<br>
+Для решения задачи может пригодиться метод sort списка.<br>
+Выводимые числа не должны повторяться, порядок их вывода может быть произвольным.
+</p>
+<div class="zim-object">
+<pre><code class="python">sps = [int(i) for i in input().split()]
+for s in set(sps):
+    if sps.count(s) &gt; 1:
+        print(s, end=' ')
+</code></pre>
+</div>
+<br>
+<div class="zim-object">
+<pre><code class="python">str = [int(i) for i in input().split()]
+ans = []
+[ans.append(x) for x in str if x not in ans and str.count(x) &gt; 1]
+print(*ans)
+</code></pre>
+</div>
+<br>
+<br>
+<h4>3<a id="3" class="h_anchor"></a></h4>
+<p>
+Напишите программу, которая выводит часть последовательности 1 2 2 3 3 3 4 4 4 4 5 5 5 5 5 ... (число повторяется столько раз, чему равно). На вход программе передаётся неотрицательное целое число n — столько элементов последовательности должна отобразить программа. На выходе ожидается последовательность чисел, записанных через пробел в одну строку.<br>
+Например, если n = 7, то программа должна вывести 1 2 2 3 3 3 4.
+</p>
+<div class="zim-object">
+<pre><code class="python">n = int(input())
+m = 1
+seq_full = []
+while len(seq_full) &lt;= n:
+    seq_dig = [m for i in range(m)]
+    m += 1
+    seq_full.extend(seq_dig)
+print(*seq_full[:n])
+</code></pre>
+</div>
+<br>
+<br>
+<h4>4<a id="4" class="h_anchor"></a></h4>
+<p>
+Напишите программу, которая считывает список чисел lst lst lst из первой строки и число x x x из второй строки, которая выводит все позиции, на которых встречается число x x x в переданном списке lst lst lst.<br>
+Позиции нумеруются с нуля, если число x x x не встречается в списке, вывести строку "Отсутствует" (без кавычек, с большой буквы).<br>
+Позиции должны быть выведены в одну строку, по возрастанию абсолютного значения.
+</p>
+<div class="zim-object">
+<pre><code class="python">lst = input().split()
+x = input()
+res = []
+for i, j in enumerate(lst):
+    if j == x:
+        res.append(i)
+if res == []:
+    print("Отсутствует")
+print(*res)
+</code></pre>
+</div>
+<br>
+<br>
+<h4>5<a id="5" class="h_anchor"></a></h4>
+<p>
+Напишите программу, на вход которой подаётся прямоугольная матрица в виде последовательности строк. После последней строки матрицы идёт строка, содержащая только строку "end" (без кавычек, см. Sample Input).<br>
+Программа должна вывести матрицу того же размера, у которой каждый элемент в позиции i, j равен сумме элементов первой матрицы на позициях (i-1, j), (i+1, j), (i, j-1), (i, j+1). У крайних символов соседний элемент находится с противоположной стороны матрицы.<br>
+В случае одной строки/столбца элемент сам себе является соседом по соответствующему направлению.
+</p>
+<div class="zim-object">
+<pre><code class="python">
+
+#var 0.2
+n, a = [],[]
+j = 0
+while n != 'end':
+    n = input()
+    if n != 'end':
+        a = n
+        j += 1
+    else:
+        break
+    print(a)
+print(type(a), j)
+
+#подсмотрен ввод
+a = []
+b = input()
+while b != 'end' :
+    a.append([int(i) for i in b.split()])
+    b = input()
+
+
+#  var 1.2
+m, row = [], []
+try:
+    while row != 'end':
+        row = [int(i) for i in input().split()]
+        m.append(row)
+#        print(row)# контроль ввода
+except ValueError:
+#  print(f"контроль ввода{m}")# контроль ввода
+#  обработка матрицы вложенным генератором типа [[0 for j in range(m)] for i in range(n)]
+#  с преобразовванием индекса к отрицательным значениям вычитанием длины списка:
+    m = [[m[i - 1][j] + m[i - len(m) + 1][j] + m[i][j - 1] + m[i][j - len(m[i]) + 1] for j in range(len(row))] for i in range(len(m))]
+#  вывод результата построчно:
+for j in range(len(m)):
+    print(*m[j])
+
+
+#  var 1.3
+m, row = [], []
+while row != 'end':
+    row = input()
+    if row == 'end':
+        break
+    m.append([int(i) for i in row.split()])
+#  print(f"контроль ввода{m}")# контроль ввода
+#  обработка матрицы вложенным генератором типа [[0 for j in range(m)] for i in range(n)]
+#  с преобразовванием индекса к отрицательным значениям вычитанием длины списка /len(m)-число строк; len(m[i])-число эл. в строке или столбцов/:
+m = [[m[i - 1][j] + m[i - len(m) + 1][j] + m[i][j - 1] + m[i][j - len(m[i]) + 1] for j in range(len(m[i]))] for i in range(len(m))]
+#  вывод результата построчно:
+for j in range(len(m)):
+    print(*m[j])
+</code></pre>
+</div>
+<br>
+<br>
+<h4>Тренировка: заполнить матрицу слева направо сверху вниз:<a id="тренировка-заполнить-матрицу-слева-направо-сверху-вниз" class="h_anchor"></a></h4>
+<div class="zim-object">
+<pre><code class="python">n = int(input())
+i = 0
+m = [[1 + i + n * s for i in range(n)] for s in range(n)]
+#  то же самое:
+#m = []
+#for s in range(n):    
+#    row = [1 + i + n * s for i in range(n)]
+#    m.append(row)
+print(m)
+</code></pre>
+</div>
+<br>
+<br>
+<h4>6  Заполнить матрицу по спирали<a id="6--заполнить-матрицу-по-спирали" class="h_anchor"></a></h4>
+<br>
+<p>
+Выведите таблицу размером n×n , заполненную числами от 1  до n^2 по спирали, выходящей из левого верхнего угла и закрученной по часовой стрелке, как показано в примере (здесь n=5 ):<br>
+Sample Input:<br>
+5<br>
+Sample Output:<br>
+1 2 3 4 5<br>
+16 17 18 19 6<br>
+15 24 25 20 7<br>
+14 23 22 21 8<br>
+13 12 11 10 9
+</p>
+<br>
+<div class="zim-object">
+<pre><code class="python">
+#var 0.3
+n = int(input())
+m = [[0 for i in range(n)] for s in range(n)]
+i, j = 0, 0
+#[m.append(x + 1) for x in range(n)]
+for i in range(n - 1): m[0][i] = i + 1
+for j in range(n - 1): m[j][n - 1] = n + j ; l = n + j
+for i in range(-1, -6, -1):
+    l += 1
+    m[n - 1][i] = l    
+print(m)
+
+#var 0.4
+n = int(input())
+m = [[0 for i in range(n)] for s in range(n)]
+i, j = 0, 0
+#[m.append(x + 1) for x in range(n)]
+for i in range(n - 1): m[0][i] = i + 1
+for j in range(n - 1): m[j][n - 1] = n + j ; l = n + j
+for i in range(-1, -6, -1):
+    l += 1
+    m[n - 1][i] = l
+for j in range(-1, -5, -1):
+    l += 1
+    m[j][0] = l
+print(m)
+
+#var 0.5
+n = int(input())
+m = [[0 for i in range(n)] for s in range(n)]
+i, j, l = 0, 0, 1
+#[m.append(x + 1) for x in range(n)]
+for i in range(n - 1): m[0][i] = l; l += 1;
+for j in range(n - 1): m[j][n - 1] = l ; l += 1;
+for i in range(-1, -6, -1): m[n - 1][i] = l; l += 1; 
+for j in range(-2, -5, -1): m[j][0] = l; l += 1;
+for i in range(n - 1): m[1][i] = l; l += 1;
+for j in range(1,n - 1): m[j][-2] = l; l += 1;    
+print(m,'\n')
+#построчно:
+for j in range(len(m)):
+    print(*m[j])
+
+#var 1.0 решение:
+n0 = n = int(input()) # начальная размерность матрицы, потом в цикле будет уменьшатся ближе к центру
+m = [[0 for i in range(n)] for s in range(n)] # 0я матрица
+i, j, l, k = 0, 0, 1, 0 # i - эл. строки, j - строка, l - значение, k - коэфициент, отступ от края матрицы
+#[m.append(x + 1) for x in range(n)]
+while l &lt; n0 ** 2:
+    for i in range(n - 1): m[k][i + k] = l; l += 1;
+    for j in range(n - 1): m[j + k][n - 1 + k ] = l ; l += 1;
+    for i in range(n - 1): m[n - 1 + k][n - i - 1 + k] = l; l += 1; 
+    for j in range(n - 1): m[n - j - 1 + k][k] = l; l += 1;
+    n -= 2; k += 1
+if n0 % 2 != 0:
+    m[n0 // 2][n0 // 2] = l
+print(m,'\n')
+#построчно:
+for j in range(len(m)):
+    print(*m[j])
+
+
+</code></pre>
+</div>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+            </div>
+            <div class="fade fade-bottom"></div>
+          </section>
+
+          <footer>
+              <a href="#" class="scrollToTop" title="Back to top"><i class="icon icon-uploadalt"></i></a>
+          </footer>
+        </article>
+      </div>
+    </main>
+  </div>
+
+  <script src="./resources/js/jquery.v2.1.3.min.js"></script>
+  <script src="./resources/js/index.js"></script>
+
+</body>
+</html>
